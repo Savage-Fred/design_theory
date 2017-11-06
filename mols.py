@@ -1,3 +1,11 @@
+'''
+Script to find mutually orthonogal latin sqaures. Currently supports order 8 only. 
+@author William McCarty
+@version November 5, 2017
+'''
+
+
+#Fill order 8 addition and multiplication tables 
 w,h = 8,8
 addition = [[0 for x in range(w)] for y in range(h)]
 multiplication = [[0 for x in range(w)] for y in range(h)]
@@ -149,30 +157,31 @@ multiplication[7][7] = 6
 
 
 
-numMols = 7
-order = 8
-result = 0
-xterm = 0
-for x in range(1,8):
-	print("\nMOLS(" + str(x)+")")
-	print("\t", end="")
-	for i in range(order):
-		print(str(i), end=" ")
-	print("")
-	for i in range(order*3):
-		print("-", end="")
-	print("\n0|\t", end="")
-	for i in range(order):
-		for j in range(order):
-			xterm = multiplication[i][x]
-			result = addition[xterm][j]
-			print (result, end = " ")
-		if i < (order -1):
-			print ("\n"+str(i+1)+"|\t", end="")
-	print("\n\ni*" + str(x) + "+j -> " + str(xterm))
-	print("")
-
-
+def order8mols():
+	numMols = 7
+	order = 8
+	result = 0
+	xterm = 0
+	for x in range(1,8):
+		print("\nMOLS(" + str(x)+")")
+		print("\t", end="")
+		for i in range(order):
+			print(str(i), end=" ")
+		print("")
+		for i in range(order*3):
+			print("-", end="")
+		print("\n0|\t", end="")
+		for i in range(order):
+			for j in range(order):
+				xterm = multiplication[i][x]
+				result = addition[xterm][j]
+				print (result, end = " ")
+			if i < (order -1):
+				print ("\n"+str(i+1)+"|\t", end="")
+		print("\n\ni*" + str(x) + "+j -> " + str(xterm))
+		print("")
+	
+order8mols()
 
 
 
